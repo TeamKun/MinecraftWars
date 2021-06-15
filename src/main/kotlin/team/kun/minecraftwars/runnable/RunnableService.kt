@@ -1,4 +1,4 @@
-package com.reyadayer.spigottemplate.runnable
+package team.kun.minecraftwars.runnable
 
 import org.bukkit.scheduler.BukkitRunnable
 

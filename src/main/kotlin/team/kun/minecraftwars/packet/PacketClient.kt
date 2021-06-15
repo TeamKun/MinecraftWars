@@ -1,4 +1,4 @@
-package com.reyadayer.spigottemplate.packet
+package team.kun.minecraftwars.packet
 
 import com.comphenix.protocol.ProtocolLibrary
 import com.comphenix.protocol.ProtocolManager

@@ -1,6 +1,6 @@
-package com.reyadayer.spigottemplate.ext
+package team.kun.minecraftwars.ext
 
-import com.reyadayer.spigottemplate.runnable.RunnableService
+import team.kun.minecraftwars.runnable.RunnableService
 import org.bukkit.command.CommandExecutor
 import org.bukkit.event.Listener
 import org.bukkit.plugin.java.JavaPlugin

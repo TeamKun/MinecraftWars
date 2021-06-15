@@ -1,7 +1,7 @@
-package com.reyadayer.spigottemplate.metadata
+package team.kun.minecraftwars.metadata
 
-import com.reyadayer.spigottemplate.ext.getMeta
-import com.reyadayer.spigottemplate.ext.setMeta
+import team.kun.minecraftwars.ext.getMeta
+import team.kun.minecraftwars.ext.setMeta
 import org.bukkit.entity.Player
 import org.bukkit.plugin.java.JavaPlugin
 import org.bukkit.scheduler.BukkitRunnable

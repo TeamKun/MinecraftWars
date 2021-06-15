@@ -1,4 +1,4 @@
-package com.reyadayer.spigottemplate.metadata
+package team.kun.minecraftwars.metadata
 
 import org.bukkit.NamespacedKey
 import org.bukkit.persistence.PersistentDataType

@@ -1,6 +1,6 @@
-package com.reyadayer.spigottemplate.ext
+package team.kun.minecraftwars.ext
 
-import com.reyadayer.spigottemplate.metadata.MetadataKey
+import team.kun.minecraftwars.metadata.MetadataKey
 import org.bukkit.metadata.FixedMetadataValue
 import org.bukkit.metadata.Metadatable
 import org.bukkit.plugin.java.JavaPlugin

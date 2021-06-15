@@ -1,4 +1,4 @@
-package com.reyadayer.spigottemplate.rx
+package team.kun.minecraftwars.rx
 
 import org.bukkit.plugin.java.JavaPlugin
 import org.bukkit.scheduler.BukkitRunnable

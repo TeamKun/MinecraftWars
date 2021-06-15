@@ -1,6 +1,6 @@
-package com.reyadayer.spigottemplate.ext
+package team.kun.minecraftwars.ext
 
-import com.reyadayer.spigottemplate.metadata.NbtKey
+import team.kun.minecraftwars.metadata.NbtKey
 import org.bukkit.persistence.PersistentDataContainer
 import org.bukkit.plugin.java.JavaPlugin
 

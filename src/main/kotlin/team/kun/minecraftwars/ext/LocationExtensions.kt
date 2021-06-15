@@ -1,4 +1,4 @@
-package com.reyadayer.spigottemplate.ext
+package team.kun.minecraftwars.ext
 
 import org.bukkit.Location
 import org.bukkit.Material
