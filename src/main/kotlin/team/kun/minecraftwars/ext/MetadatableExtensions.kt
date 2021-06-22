@@ -25,3 +25,7 @@ fun <T> Metadatable.setMeta(plugin: JavaPlugin, metadataKey: MetadataKey<T>, val
 fun <T> Metadatable.removeMeta(plugin: JavaPlugin, metadataKey: MetadataKey<T>) {
     removeMetadata(metadataKey.value, plugin)
 }
+
+fun <T> Metadatable.hasMeta(metadataKey: MetadataKey<T>): Boolean {
+    return hasMetadata(metadataKey.value)
+}

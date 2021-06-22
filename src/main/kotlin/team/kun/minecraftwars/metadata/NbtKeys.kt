@@ -10,4 +10,5 @@ sealed class NbtKey<T>(val persistentDataType: PersistentDataType<T, T>) {
 
 sealed class BasicNbtKey<T>(persistentDataType: PersistentDataType<T, T>) : NbtKey<T>(persistentDataType) {
     object Name : BasicNbtKey<String>(PersistentDataType.STRING)
+    object IsMinecraftWarsEntity : BasicNbtKey<Byte>(PersistentDataType.BYTE)
 }

@@ -1,5 +1,6 @@
 package net.kunmc.lab.theworld
 
 object PluginCommands {
-    const val SETTING = "stsetting"
+    const val DEBUG = "mwdebug"
+    const val GAME = "mwgame"
 }

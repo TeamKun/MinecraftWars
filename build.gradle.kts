@@ -34,12 +34,12 @@ dependencies {
     compileOnly(Dependencies.Spigot.annotations)
     kapt(Dependencies.Spigot.annotations)
     compile(Dependencies.Kotlin.stdlib)
+    compile(Dependencies.Kotlin.reflect)
     compileOnly(Dependencies.ProtocolLib.core) {
         exclude("com.comphenix.executors", "BukkitExecutors")
     }
     compileOnly(Dependencies.MineInAbyss.Geary.core)
     compileOnly(Dependencies.MineInAbyss.Geary.spigot)
-    implementation(Dependencies.MineInAbyss.Mobzy.core)
     compile(Dependencies.MineInAbyss.Idofront.nms)
     testCompile(Dependencies.JUnit.core)
     testCompile(Dependencies.MockBukkit.core)

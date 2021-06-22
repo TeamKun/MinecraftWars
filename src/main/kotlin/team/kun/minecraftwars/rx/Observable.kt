@@ -11,6 +11,8 @@ class Observable private constructor(private val tick: Long) {
     }
 
     private var limit: Long? = null
+    private var delay: Long = 0
+    private var isAsync: Boolean = false
     private var doOnNextFunction: ((data: Long) -> Unit)? = null
     private var doOnCompleteFunction: ((data: Long) -> Unit)? = null
     private var doOnCompleteConditionFunction: ((data: Long) -> Boolean)? = null
@@ -19,6 +21,16 @@ class Observable private constructor(private val tick: Long) {
 
     fun take(data: Long): Observable {
         limit = data
+        return this
+    }
+
+    fun isAsync(value: Boolean): Observable {
+        isAsync = value
+        return this
+    }
+
+    fun delay(value: Long): Observable {
+        delay = value
         return this
     }
 
@@ -48,7 +60,7 @@ class Observable private constructor(private val tick: Long) {
     }
 
     fun subscribe(plugin: JavaPlugin) {
-        object : BukkitRunnable() {
+        val runnable = object : BukkitRunnable() {
             var data: Long = 0L
             override fun run() {
                 val isComplete = doOnCompleteConditionFunction?.invoke(data) ?: false
@@ -64,7 +76,12 @@ class Observable private constructor(private val tick: Long) {
                 doOnNextFunction?.invoke(data)
                 data += 1
             }
-        }.runTaskTimerAsynchronously(plugin, 0, tick)
+        }
+        if (isAsync) {
+            runnable.runTaskTimerAsynchronously(plugin, delay, tick)
+        } else {
+            runnable.runTaskTimer(plugin, delay, tick)
+        }
     }
 
     private fun isLimit(data: Long): Boolean {

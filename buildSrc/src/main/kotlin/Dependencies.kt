@@ -3,6 +3,7 @@ object Dependencies {
         val version = "1.4.10"
         val classpath = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
         val stdlib = "org.jetbrains.kotlin:kotlin-stdlib:$version"
+        val reflect = "org.jetbrains.kotlin:kotlin-reflect:$version"
     }
 
     object Nms {
