@@ -19,6 +19,12 @@ class IronItem : PickUpItem() {
     override fun pickUp(player: Player, plugin: JavaPlugin) {
         player.playSound(player.location, Sound.BLOCK_ANVIL_USE, 1.0f, 1.0f)
         player.getMeta(MetadataKey.PlayerMobs)?.filterIsInstance<LivingEntity>()?.forEach {
+            val itemInMainHand = it.equipment?.itemInMainHand
+            if (itemInMainHand?.type == Material.NETHERITE_SWORD
+                || itemInMainHand?.type == Material.DIAMOND_SWORD
+            ) {
+                return@forEach
+            }
             it.equipment?.setItemInMainHand(ItemStack(Material.IRON_SWORD))
             it.equipment?.chestplate = ItemStack(Material.IRON_CHESTPLATE)
             it.equipment?.leggings = ItemStack(Material.IRON_LEGGINGS)

@@ -6,7 +6,7 @@ plugins {
     kotlin("kapt").version(Dependencies.Kotlin.version)
 }
 
-group = "com.reyadayer"
+group = "team.kun"
 version = "1.0-SNAPSHOT"
 
 tasks.withType<KotlinCompile> {
