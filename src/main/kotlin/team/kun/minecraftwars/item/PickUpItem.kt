@@ -13,6 +13,7 @@ abstract class PickUpItem : Item() {
         val item = location.world?.dropItem(location, toItemStack(plugin)) ?: return
         item.customName = item.itemStack.itemMeta?.displayName
         item.isCustomNameVisible = true
+        item.isGlowing = true
         item.persistentDataContainer.setNbt(plugin, BasicNbtKey.IsMinecraftWarsEntity, 1)
     }
 }

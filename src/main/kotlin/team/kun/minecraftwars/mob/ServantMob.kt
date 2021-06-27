@@ -19,8 +19,8 @@ import team.kun.minecraftwars.metadata.MetadataKey
 abstract class ServantMob(
     private val owner: Player,
     entityTypes: NMSEntityType<out NMSEntityCreature>
-) : NMSEntityCreature(entityTypes, owner.world.toNMS()) {
-    fun spawn(location: Location, plugin: JavaPlugin) {
+) : NMSEntityCreature(entityTypes, owner.world.toNMS()), Servantable {
+    override fun spawn(location: Location, plugin: JavaPlugin) {
         val world = location.world.toNMS()
         world.addEntity(this, CreatureSpawnEvent.SpawnReason.CUSTOM)
         setLocation(location.x, location.y, location.z, location.yaw, location.pitch)
@@ -43,7 +43,7 @@ abstract class ServantMob(
         onSpawn(owner, plugin)
     }
 
-    fun dead(killer: Entity, plugin: JavaPlugin) {
+    override fun dead(killer: Entity, plugin: JavaPlugin) {
         val entity = toBukkit()
         val playerMobs = owner.getMeta(MetadataKey.PlayerMobs, listOf()).toMutableList()
         playerMobs.remove(entity)
@@ -53,10 +53,6 @@ abstract class ServantMob(
             onDead(entity, plugin)
         }
     }
-
-    abstract fun onSpawn(owner: Player, plugin: JavaPlugin)
-
-    abstract fun onDead(killer: Player, plugin: JavaPlugin)
 
     override fun canPickup(itemstack: ItemStack?): Boolean {
         return false

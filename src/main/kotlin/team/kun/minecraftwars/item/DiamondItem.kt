@@ -14,7 +14,7 @@ class DiamondItem : PickUpItem() {
     override val description = listOf(
         "ダイヤモンド装備にする"
     )
-    override val itemStack = ItemStack(Material.IRON_INGOT)
+    override val itemStack = ItemStack(Material.DIAMOND)
 
     override fun pickUp(player: Player, plugin: JavaPlugin) {
         player.playSound(player.location, Sound.BLOCK_ANVIL_USE, 1.0f, 1.0f)

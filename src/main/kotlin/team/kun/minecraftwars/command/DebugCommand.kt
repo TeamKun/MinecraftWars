@@ -22,7 +22,7 @@ class DebugCommand(private val plugin: MinecraftWars) : CommandExecutor, TabComp
                         SpawnAction.ZOMBIE -> ZombieMob(sender)
                         SpawnAction.SKELETON -> SkeletonMob(sender)
                         SpawnAction.GOLEM -> GolemMob(sender)
-                        SpawnAction.VEX -> VexMob(sender)
+                        SpawnAction.PHANTOM -> PhantomMob(sender)
                         SpawnAction.HUSK -> HuskMob(sender)
                         else -> null
                     }
@@ -88,7 +88,7 @@ class DebugCommand(private val plugin: MinecraftWars) : CommandExecutor, TabComp
         ZOMBIE("zombie"),
         SKELETON("skeleton"),
         GOLEM("golem"),
-        VEX("vex"),
+        PHANTOM("phantom"),
         HUSK("husk");
 
         companion object {

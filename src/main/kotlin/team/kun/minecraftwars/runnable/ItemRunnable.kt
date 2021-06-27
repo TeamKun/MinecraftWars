@@ -59,10 +59,8 @@ class ItemRunnable(private val plugin: MinecraftWars) : BukkitRunnable() {
             .forEach { player ->
                 val itemTable = itemTables[level]
                 repeat(level + 1) {
-                    val location = player.location.random(40.0, 0.0, 40.0).toHighestLocation()
-                    itemTable?.randomOrNull()?.let { item ->
-                        item.spawn(location, plugin)
-                    }
+                    val location = player.location.random(40.0, 0.0, 40.0).toHighestLocation().add(0.0, 10.0, 0.0)
+                    itemTable?.randomOrNull()?.spawn(location, plugin)
                 }
             }
         count += 1

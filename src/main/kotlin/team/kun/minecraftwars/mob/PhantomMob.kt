@@ -3,10 +3,8 @@ package team.kun.minecraftwars.mob
 import com.mineinabyss.idofront.nms.aliases.NMSEntityType
 import com.mineinabyss.idofront.nms.aliases.toBukkit
 import com.mineinabyss.idofront.nms.aliases.toNMS
-import com.mineinabyss.idofront.nms.pathfindergoals.removePathfinderGoal
 import net.minecraft.server.v1_16_R3.*
 import org.bukkit.Location
-import org.bukkit.attribute.Attribute
 import org.bukkit.entity.Entity
 import org.bukkit.entity.Player
 import org.bukkit.event.entity.CreatureSpawnEvent
@@ -19,18 +17,23 @@ import team.kun.minecraftwars.metadata.BasicNbtKey
 import team.kun.minecraftwars.metadata.MetadataKey
 import java.util.function.Predicate
 
-class GolemMob(private val owner: Player) : EntityIronGolem(NMSEntityType.IRON_GOLEM, owner.world.toNMS()),
-    Servantable {
+class PhantomMob(private val owner: Player) : EntityPhantom(NMSEntityType.PHANTOM, owner.world.toNMS()), Servantable {
     override fun initPathfinder() {
-        goalSelector.a(0, PathfinderGoalFloat(this))
-        goalSelector.a(0, PathfinderGoalMeleeAttack(this, 1.0, false))
+        super.initPathfinder()
         targetSelector.a(
-            2, PathfinderGoalNearestAttackableTarget(
+            1, PathfinderGoalNearestAttackableTarget(
                 this,
-                EntityLiving::class.java, 20, true, true, null as Predicate<EntityLiving>?
+                EntityLiving::class.java, 40, true, true, null as Predicate<EntityLiving>?
             )
         )
     }
+
+    override fun onSpawn(owner: Player, plugin: JavaPlugin) {
+        val entity = toBukkit()
+
+        entity.equipment?.helmet = HeadItem(owner).toItemStack(plugin)
+    }
+
 
     override fun spawn(location: Location, plugin: JavaPlugin) {
         val world = location.world.toNMS()
@@ -66,18 +69,8 @@ class GolemMob(private val owner: Player) : EntityIronGolem(NMSEntityType.IRON_G
         }
     }
 
-    override fun onSpawn(owner: Player, plugin: JavaPlugin) {
-        val entity = toBukkit()
-
-        entity.equipment?.helmet = HeadItem(owner).toItemStack(plugin)
-        val baseSpeed = entity.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED)?.baseValue
-        baseSpeed?.let {
-            entity.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED)?.baseValue = it * 2.0
-        }
-    }
-
     override fun onDead(killer: Player, plugin: JavaPlugin) {
-        GolemMob(killer).spawn(killer.location, plugin)
+        PhantomMob(killer).spawn(killer.location, plugin)
     }
 
     override fun setOnFire(i: Int, callEvent: Boolean) {
